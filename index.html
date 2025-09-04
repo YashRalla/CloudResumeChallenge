@@ -370,5 +370,30 @@ https://templatemo.com/tm-530-mini-profile
         });
       });
     </script>
+	<script>
+		fetch("https://xovo6wi2li.execute-api.ap-south-1.amazonaws.com/dev/CRC", {
+			method: 'POST',
+			body: JSON.stringify({
+				"operation": "update",
+				"payload": {
+					"Key": {
+						"id": "General"
+					},
+					"UpdateExpression": "SET #num = #num + :newNum",
+					"ExpressionAttributeNames": {
+						"#num": "viewsCount"
+					},
+					"ExpressionAttributeValues": {
+						":newNum": 1
+					}
+				}
+			}),
+			headers: {
+				'Content-type': 'application/json'
+			}
+		})
+		.then(response => response.json())
+		.then(json => console.log(json));
+	</script>
   </body>
 </html>
