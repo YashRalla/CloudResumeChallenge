@@ -44,17 +44,23 @@ https://templatemo.com/tm-530-mini-profile
                 <p class="pb-0" style="text-align: justify; text-justify: inter-word;">
 					Yasasvi is a motivated software developer with Agile experience and is focused on code quality and solving problems. He is skilled in collaborating with global teams, adapting to evolving needs, and
 					delivering customer-focused, cloud-based solutions. </p>
+					<p style="color:red;" id="count"></p>
               </div>
             </div>
             <!-- Brown bg -->
             <div class="col-md-5">
               <div class="tm-welcome-right">
                 <p class="mb-0" style="text-align: center;">
-                  <a href="https://www.github.com/YashRalla">Yasasvi's GitHub<br></a>
+					<a href="https://learn.microsoft.com/en-us/users/yasasvirallabandi-2432/transcript/vyqy0aor2qne1rn"><img src="img/AzureFunda.png" style="width: 200px; height: 200px;"></a>
+					<p class="mb-0" style="text-align: center; padding-top: 10px">
+					Microsoft Certified: Azure Fundamentals<br>
+					Earned on: May 1, 2024
+					</p>
+                  <!-- <a href="https://www.github.com/YashRalla">Yasasvi's GitHub<br></a>
 				  <a href="https://www.linkedin.com/in/yashralla">Yasasvi's LinkedIn<br></a>
 				  <a>Contact:<br></a>				  
 				  <a href="mailto:yrallabandi53@gmail.com">Email: yrallabandi53@gmail.com<br></a>
-				  <a>Phone: +91-8074429959</a>
+				  <a>Phone: +91-8074429959</a> -->
                 </p>
               </div>
             </div>
@@ -93,7 +99,7 @@ https://templatemo.com/tm-530-mini-profile
                 <p class="mb-0">
 					<ul style="list-style-type:disc;">
 						<li>Enhanced and developed features for the AVEVA XR Platform, incorporating user-approved improvements to optimize functionality.</li>
-						<li>Resolved technical issues and contributed to two successful software releases.</li>
+						<li>Resolved technical issues and contributed to multiple successful software releases.</li>
 						<li>Helped adopt a custom development framework, improving performance by 14%.</li>
 					</ul>
                 </p>
@@ -247,27 +253,28 @@ https://templatemo.com/tm-530-mini-profile
         <div class="row">
           <div class="col-12">
             <div class="tm-contact-items-container">
-              <div class="tm-contact-item" style="width: 580px; height: 620px; "><!--Add my certificate thumbnail here. Login, then Credentials/View all certifications/Details -->
-                <a href="https://learn.microsoft.com/en-us/users/yasasvirallabandi-2432/transcript/vyqy0aor2qne1rn"><img src="img/AZ-900.png" style="width: 510px; height: 480px;"></a>
-                <p class="mb-0" style="text-align: center; padding-top: 10px">
-                  Microsoft Certified: Azure Fundamentals<br>
-				  Credential Number: 94D492-F14B3F
+              <div class="tm-contact-item"><!--Add my certificate thumbnail here. Login, then Credentials/View all certifications/Details -->
+                <a><center><img src="img/GitHub.png" style="width: 160px; height: 160px;"></center></a>
+                <p class="mb-0" style="text-align: center; padding-top: 50px">
+                  <a href="https://www.github.com/YashRalla">Yasasvi's GitHub<br></a>
                 </p>
               </div>
 			  
-              <!-- <div class="tm-contact-item">
-                <i class="fas fa-5x fa-building tm-contact-item-icon"></i>
-                <p class="mb-0">
-                  You can absolutely feel free to use Mini Profile for your web page or any usage for your website.
+              <div class="tm-contact-item"> <!--Use this for LinkedIn-->
+                <a><center><img src="img/LinkedIn_logo_initials.png" style="width: 160px; height: 160px;"></center></a>
+                <p class="mb-0" style="text-align: center; padding-top: 50px">
+                  <a href="https://www.linkedin.com/in/yashralla">Yasasvi's LinkedIn<br></a>
                 </p>
               </div>
 
-              <div class="tm-contact-item">
-                <i class="fas fa-5x fa-balance-scale tm-contact-item-icon"></i>
-                <p class="mb-0">
-                  You are NOT allowed to re-distribute this template in any download website. Else, it is illegal action.
+              <div class="tm-contact-item"> <!--Use this for email and phone no-->
+                <a><center><img src="img/PhoneEmail.jpg" style="width: 160px; height: 160px;"></center></a>
+                <p class="mb-0" style="text-align: center; padding-top: 50px">
+                  <a>Contact:<br></a>				  
+				  <a href="mailto:yrallabandi53@gmail.com">Email: yrallabandi53@gmail.com<br></a>
+				  <a>Phone: +91-8074429959</a>
                 </p>
-              </div> -->
+              </div>
 			  
             </div>
           </div>
@@ -326,9 +333,9 @@ https://templatemo.com/tm-530-mini-profile
         <div class="row">
           <footer class="col-12">
             <p class="text-center tm-copyright-text">
-            Copyright 2020 Mini Profile Page 
+            Copyright &copy; 2025 Yasasvi Ram Rallabandi. All Rights Reserved.<br>
             
-            - Design: Template Mo</p>
+            Original Template Design: Template Mo</p>
           </footer>
         </div>
       </div>
@@ -394,6 +401,33 @@ https://templatemo.com/tm-530-mini-profile
 		})
 		.then(response => response.json())
 		.then(json => console.log(json));
+	</script>
+	<script>
+		fetch("https://xovo6wi2li.execute-api.ap-south-1.amazonaws.com/dev/CRC", {
+			method: 'POST',	// I know that this seems counter-intuitive that we're using POST rather than GET, but POST isn't necessarily used for updation. It's used to send a body, hence the name 'POST'
+			body: JSON.stringify({
+				"operation": "read",  // This is what lets us read.
+				"payload": {
+					"Key": {
+						"id": "General"
+					}
+				}
+			}),
+			headers: {
+				'Content-type': 'application/json'
+			}
+		})
+		.then(response => response.json())
+		.then(json => {
+			console.log(json);
+			// If json is an array and you want the first item's ViewsCount
+			const vc = json.Item ? json.Item.viewsCount : 0;  // Default to 0 if no data. Got this line from ChatGPT...
+			document.getElementById('count').textContent = "Visit Count: " + vc; // Got from GeeksForGeeks
+		})
+		.catch(error => {
+			console.error('Error fetching data:', error);
+			document.getElementById('count').textContent = "Failed to load visit count.";
+		});
 	</script>
   </body>
 </html>
